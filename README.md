@@ -6,11 +6,11 @@ Make sure you have boost and libusb-1.0 installed.
 
 ### For Ubuntu (15.10)
 
-* ***sudo apt-get install libusb-1.0-0-dev***
-* ***sudo apt-get install libboost-all-dev***
-
+* `sudo apt-get install libusb-1.0-0-dev`
+* `sudo apt-get install libboost-all-dev`
 
 ### Build
+
 Compile by running
 
     make
@@ -18,7 +18,6 @@ Compile by running
 If you want to run the daemon as user, put the file 91-g13.rules into /etc/udev/rules.d/ (or whatever directory your distribution uses).
 
 ## Running
-
 
 Connect your device, then run ./g13d, it should automatically find your device.
 
@@ -45,21 +44,19 @@ If you see output like
            STICK_PAGEUP   { 0 x 0 / 1 x 0.1 }   SEND KEYS: PAGEUP
          STICK_PAGEDOWN   { 0 x 0.9 / 1 x 1 }   SEND KEYS: PAGEDOWN
 
-
-
 that is good. This also shows you which name the keys on the G13 have, and what keys you can bind them to.
 
 ### Command line options
 
 The following options can be used when starting g13d
 
-Option 				|  Description
---------------------|-------------------------------------------------
- --help             | show help
- --logo *arg*       | set logo from file
- --config *arg*     | load config commands from file
- --pipe_in *arg*    | specify name for input pipe
- --pipe_out *arg*   | specify name for output pipe
+| Option           | Description                    |
+| ---------------- | ------------------------------ |
+| --help           | show help                      |
+| --logo *arg*     | set logo from file             |
+| --config *arg*   | load config commands from file |
+| --pipe_in *arg*  | specify name for input pipe    |
+| --pipe_out *arg* | specify name for output pipe   |
 
 ## Configuring / Remote Control
 
@@ -75,6 +72,7 @@ default. Example:
 ### Actions
 
 Various parts of configuring the G13 depend on assigning actions to occur based on something happening to the G13. 
+
 * key, possible values shown upon startup  (e.g. ***KEY_LEFTSHIFT***).
 * multiple keys,  like ***KEY_LEFTSHIFT+KEY_F1***
 * pipe output, by using ">" followed by text, as in ***>Hello*** - causing **Hello** (plus newline) to be written to the output pipe ( **/tmp/g13-0_out** by default )
@@ -94,6 +92,7 @@ would set M1, M3 and MR, and unset M2).
 ### bind *keyname* *action*
 
 This binds a key or a stick zone. 
+
 * The possible values of *keyname* for keys are shown upon startup (e.g. G1).
 * The possible values of *action* are described in [Actions].
 
@@ -101,27 +100,27 @@ This binds a key or a stick zone.
 
 The stick can be used as an absolute input device or can send key events. You can change modes to one of the following:
 
-Mode       | Description
------------|---------------------------
-KEYS       | translates stick movements into key / action bindings
-ABSOLUTE   | stick becomes mouse with absolute positioning
-RELATIVE   | not quite working yet...
-CALCENTER  | calibrate stick center position
-CALBOUNDS  | calibrate stick boundaries
-CALNORTH   | calibrate stick north
-  
+| Mode      | Description                                           |
+| --------- | ----------------------------------------------------- |
+| KEYS      | translates stick movements into key / action bindings |
+| ABSOLUTE  | stick becomes mouse with absolute positioning         |
+| RELATIVE  | not quite working yet...                              |
+| CALCENTER | calibrate stick center position                       |
+| CALBOUNDS | calibrate stick boundaries                            |
+| CALNORTH  | calibrate stick north                                 |
+
 ### stickzone *operation* *zonename* *args*
 
 defines zones to be used when the stick is in KEYS mode
 
 Where *operation* can be
 
-operation | what it does
-----------|----------------
-add       | add a new zone named *zonename*
-del       | remove zone named *zonename*
-action    | set action for zone, see [Actions]  
-bounds    | set boundaries for zone, *args* are X1, Y1, X2, Y2, where X1/Y1 are top left corner, X2/Y2 are bottom right corner 
+| operation | what it does                                                                                                       |
+| --------- | ------------------------------------------------------------------------------------------------------------------ |
+| add       | add a new zone named *zonename*                                                                                    |
+| del       | remove zone named *zonename*                                                                                       |
+| action    | set action for zone, see [Actions]                                                                                 |
+| bounds    | set boundaries for zone, *args* are X1, Y1, X2, Y2, where X1/Y1 are top left corner, X2/Y2 are bottom right corner |
 
 Default created zones are LEFT, RIGHT, UP and DOWN.
 
@@ -138,6 +137,7 @@ Example:
 ### pos *row* *col*
 
 Sets the current text position to *row* *col*.  
+
 * *row* is specified in characters (0-4), as all fonts are 8 pixels high and rows start on pixel row 0, 8, 16, 24, or 32
 * *col* is specified in pixels (0-159)
 
@@ -158,12 +158,12 @@ Sets the text mode to *mode*, current options are 0 (normal) or 1 (inverted)
 Resends the LCD buffer
 
 ### profile *profile_name*
-    
+
 Selects *profile_name* to be the current profile, it if it doesn't exist creating it as a copy of the current profile.
 
 All key binding changes (from the bind command) are made on the current profile.
-  
-### font *font_name*   
+
+### font *font_name*
 
 Switch font, current options are ***8x8*** and ***5x8***    
 
@@ -185,3 +185,9 @@ The pbm file must be 160x43 pixels.
 All files without a copyright notice are placed in the public domain. Do with it whatever you want.
 
 Some source code files include MIT style license - see files for specifics.
+
+
+
+## What does this fork add?
+
+This fork adds support for the meta (windows or super) keys and for mouse buttons
