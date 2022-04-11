@@ -74,7 +74,7 @@ default. Example:
 Various parts of configuring the G13 depend on assigning actions to occur based on something happening to the G13. 
 
 * key, possible values shown upon startup  (e.g. ***KEY_LEFTSHIFT***).
-* multiple keys,  like ***KEY_LEFTSHIFT+KEY_F1***
+* multiple keys,  like ***KEY_LEFTSHIFT+KEY_F1*** (a list of the keys can be found [here](https://github.com/spotify/linux/blob/master/include/linux/input.h))
 * pipe output, by using ">" followed by text, as in ***>Hello*** - causing **Hello** (plus newline) to be written to the output pipe ( **/tmp/g13-0_out** by default )
 * command, by using "!" followed by text, as in ***!stick_mode KEYS*** 
 
@@ -185,8 +185,6 @@ The pbm file must be 160x43 pixels.
 All files without a copyright notice are placed in the public domain. Do with it whatever you want.
 
 Some source code files include MIT style license - see files for specifics.
-
-
 
 ## What does this fork add?
 
